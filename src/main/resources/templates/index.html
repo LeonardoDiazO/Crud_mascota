@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>CrudMascotas</title>
+<!-- CSS only -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+	crossorigin="anonymous">
+
+</head>
+<h1 class="text-center">CRUD MASCOTAS</h1>
+<body>
+
+	<div class="container mt-4">
+		<div class="container">
+			<a th:href="@{/new}" class="btn btn-primary">AGREGAR</a>
+		</div>
+		<table class="table ">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>NOMBRE</th>
+					<th>TELEFONO</th>
+					<th>NOMBRE DE MASCOTA</th>
+					<th>RAZA</th>
+					<th>SERVICIO</th>
+					<th>ACCIONES</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="mascota:${mascotas}">
+					<td th:text="${mascota.id}">ID</td>
+					<td th:text="${mascota.name}">NOMBRE</td>
+					<td th:text="${mascota.telefono}">TELEFONO</td>
+					<td th:text="${mascota.pets}">MASCOTA</td>
+					<td th:text="${mascota.raza}">RAZA</td>
+					<td th:text="${mascota.Servicio}">ACCIONES</td>
+					<td><a th:href="@{/editar/}+${mascota.id}"><button
+								type="button" class="btn btn-outline-warning">EDITAR</button></a> <a
+						th:onclick="eliminar([[${mascota.id}]])"
+						class="btn btn-outline-danger">ELIMINAR</a></td>
+
+				</tr>
+
+			</tbody>
+		</table>
+
+	</div>
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="funciones.js"></script>
+</body>
+</html>
